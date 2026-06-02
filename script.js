@@ -29,7 +29,36 @@ function validName(){
 
 }
 
-document.getElementById("name").addEventListener("blur", validName);
+
+function validSurname(){
+    const surnameInput = document.getElementById("surname");
+    const error = surnameInput.parentElement.querySelector(".error");
+    const formData = new FormData(form);
+
+    let receivedValue = (formData.get("surname") || "").trim();
+
+    if (receivedValue == ""){
+        surnameInput.style.color = "red";
+        error.style.color = "red";
+        error.textContent = "The surname is required";
+        return false
+
+    }
+
+    if (receivedValue.length < 3 ){
+        surnameInput.style.color = "red";
+        error.style.color = "red";
+        error.textContent = "Please enter a valid surname";
+        return false
+
+    }
+
+    surnameInput.style.color = "green";
+    error.textContent = "";
+    return true;
+
+}
+document.getElementById("surname").addEventListener("blur", validSurname);
 
 
 
