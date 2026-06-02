@@ -142,7 +142,41 @@ function validPersonType(){
 }
 
 
-document.getElementById("typePerson").addEventListener("blur", validPersonType)
+document.getElementById("typePerson").addEventListener("change", validPersonType);
+
+
+function validHobby(){
+    const hobbyChoice = document.getElementById("hobby")
+    const formData = new FormData;
+
+    const error = hobbyChoice.parentElement.querySelector(".error");
+
+
+    let receivedValue = (formData.getAll("hobby") || []);
+
+    if (receivedValue == []){
+        error.textContent = "Please make a choice between these";
+        hobbyChoice.style.color = "red";
+        error.style.color = "red";
+        return false;
+    }
+
+    if (receivedValue.length < 2){
+        error.textContent = "Please make at least 2 choices";
+        error.style.color = "red";
+        hobbyChoice.style.color = "red";
+        return false;
+    }
+
+    error.textContent = "";
+    hobbyChoice.style.color = "green";
+    return true;
+
+}
+
+document.getElementById("hobby").addEventListener("change", validHobby)
+
+
 
 
 
