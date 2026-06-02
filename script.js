@@ -29,6 +29,9 @@ function validName(){
 
 }
 
+document.getElementById("name").addEventListener("blur", validName);
+
+
 
 function validSurname(){
     const surnameInput = document.getElementById("surname");
@@ -59,6 +62,37 @@ function validSurname(){
 
 }
 document.getElementById("surname").addEventListener("blur", validSurname);
+
+
+
+function validEmail(){
+    const emailInput = document.getElementById("email");
+    const formData = new FormData(form);
+
+    const error = emailInput.parentElement.querySelector(".error")
+
+    let receivedValue = (formData.get("email") || "" ).trim();
+
+    if (receivedValue == ""){
+        error.style.color = "red";
+        error.textContent = "You must enter a valid email";
+        return false;
+    }
+
+    if (!('/@gmail.com$/').test(receivedValue) || !('[^a-z]').test(receivedValue) ){
+        error.style.color = "red";
+        error.textContent = "You must enter a valid email";
+        return false;
+    }
+
+    emailInput.style.color = "green"
+    error.textContent = ""
+    return true;
+    
+    
+}
+
+document.getElementById("email").addEventListener("blur", validEmail);
 
 
 
