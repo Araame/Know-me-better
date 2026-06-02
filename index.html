@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-</head>
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center text-dark">
-        <h1 class="fw-bold text-secondary">Know me better</h1>
-        <form novalidate class="glass p-5 d-flex flex-column justify-content-center align-items-center ">
+    <div class="container-fluid d-flex  justify-content-center align-items-center">
+        
+        <form novalidate class="glass p-5 d-flex flex-column justify-content-start align-items-left p-3 " id="form">
+            <h1 class="fw-bold ">Know me better</h1>
             <div class="mb-3">
-                <label public for="name">Name</label>
+                <label for="name">Name</label>
                 <input type="text" name="name" id="name">
                 <span class="error"></span>
             </div>
@@ -24,14 +24,12 @@
                 <label for="surname">Surname</label>
                 <input type="text" name="surname" id="surname">
                 <span class="error"></span>
-
             </div>
 
             <div class="mb-3">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
                 <span class="error"></span>
-
             </div>
 
             <div class="mb-3">
@@ -49,15 +47,15 @@
             <div class="mb-3">
                 <span class="error"></span>
                 <input type="radio" name="typePerson" id="typePerson" value="Early Bird">
-                <label for="earlyBird">Early Bird</label>
+                <label for="typePerson">Early Bird</label>
                 
-                <input type="radio" name="typePerson" id="typePerson" value="Night Owl">
-                <label for="nightOwl">Night Owl</label>
+                <input type="radio" name="typePerson" id="typePerson2" value="Night Owl">
+                <label for="typePerson2">Night Owl</label>
             </div>
 
             <div class="mb-3">
                 <input type="checkbox" name="hobby" id="hobby" value="Tech Survey">
-                <label for="tech_survey">Tech Survey</label>
+                <label for="hobby">Tech Survey</label>
                 
                 <input type="checkbox" name="hobby" id="gaming" value="Gaming">
                 <label for="gaming">Gaming</label>
@@ -76,7 +74,7 @@
             <div class="mb-3">
                 <label for="storytime">Storytime</label>
                 <textarea name="storytime" id="storytime" cols="30"></textarea>
-                <span class="remaining">Characters</span>
+                <span class="remaining">255 characters</span>
                 <span class="error"></span>
             </div>
 
@@ -85,10 +83,8 @@
             </div>
         </form>
 
-        <div class="card" id="card">
+        <div class="m-4 card" id="card" style="display: none !important; border-radius: 20px;"></div>
         
-        </div>
     </div>
-    
 </body>
 </html>
