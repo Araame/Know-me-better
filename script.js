@@ -139,6 +139,7 @@ function validPersonType(){
     
     error.textContent = "";
     personTypeChoice.style.color = "green"
+    return true;
 }
 
 
@@ -154,7 +155,7 @@ function validHobby(){
 
     let receivedValue = (formData.getAll("hobby") || []);
 
-    if (receivedValue == []){
+    if (receivedValue.length == 0){
         error.textContent = "Please make a choice between these";
         hobbyChoice.style.color = "red";
         error.style.color = "red";
@@ -174,7 +175,7 @@ function validHobby(){
 
 }
 
-// document.getElementById("hobby").addEventListener("change", validHobby)
+document.getElementById("hobby").addEventListener("change", validHobby)
 
 function validStorytime() {
     const storytimeInput = document.getElementById("storytime");
@@ -192,7 +193,7 @@ function validStorytime() {
     }
 
 
-    if (receivedValue.length < 25 || receivedValue > 255 ){
+    if (receivedValue.length < 25 || receivedValue.length > 255 ){
         error.textContent = "Your story must contains between 25 characters and 255 characters";
         error.style.color = "red";
         return false;
@@ -206,31 +207,50 @@ function validStorytime() {
 }
 
 document.getElementById("storytime").addEventListener("blur", validStorytime);
-// document.getElementById("storytime").addEventListener("input", remainingCharacters());
+document.getElementById("storytime").addEventListener("input", () => {
+    const inputLength = document.getElementById("storytime").value.length;
+    const remainingChar = 255 - inputLength;
+    
+    document.querySelector(".remaining").textContent = remainingChar;
+});
 
-
-// function remainingCharacters(receivedValue) {
-//     const remainingChar = 255 - receivedValue.length;
-//     const storytimeInput = document.getElementById("storytime");
-//     const remaining = document.querySelector(".remaining");
-//     remaining.textContent = remainingChar;
-//     console.log(remaining);
-//     return remainingCharacters;
-
-// }
 
 
 
 
 form.addEventListener("submit", function(e) {
 
+    const name = validName();
+    const surname = validSurname();
+    const email = validEmail();
+    const hobby = validHobby();
+    const personType = validPersonType();
+    const profile = validProfile();
+    const storytime = validStorytime();
 
-    if (!(validStorytime)){
+
+
+    if (!(validName) || !(validSurname) ||  !(validEmail) ||  !(validHobby) ||  !(validPersonType) ||  !(validProfile) ||  !(validStorytime) ){
         e.preventDefault(); 
         alert("Invalid form cannot be submitted ! Try again");
     }
+
     else{
-        alert("Formulaire soumis avec succès !");
+     const formData = new FormData(form);
+        const datas = {
+            name : formData.get("name"),
+            surname: formData.get("surname"),
+            email: formData.get("email"),
+            profile: formData.get("profile"),
+            hobby: formData.getAll("hobby"),
+            typePerson: formData.get("typePerson"),
+            storytime: formData.get("storytime")
+        }
+        alert("Form sent");
+        alert(datas);
+        console.log("Datas", datas);
+        document.getElementById("card").innerHTML="<p>hello</p>";
     }
+
 
 });
