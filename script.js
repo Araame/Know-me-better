@@ -147,7 +147,7 @@ document.getElementById("typePerson").addEventListener("change", validPersonType
 
 function validHobby(){
     const hobbyChoice = document.getElementById("hobby")
-    const formData = new FormData;
+    const formData = new FormData(form);
 
     const error = hobbyChoice.parentElement.querySelector(".error");
 
@@ -176,7 +176,44 @@ function validHobby(){
 
 document.getElementById("hobby").addEventListener("change", validHobby)
 
+function validStorytime() {
+    const storytimeInput = document.getElementById("storytime");
+    const formData = new FormData(form);
 
+    const error = storytimeInput.parentElement.querySelector(".error");
+
+    let receivedValue = (formData.get("storytime") || "");
+
+
+    if (receivedValue == "" ){
+        error.textContent = "Your story can't be empty";
+        error.style.color = "red";
+        return false;
+    }
+
+
+    if (receivedValue.length < 25 || receivedValue > 255 ){
+        error.textContent = "Your story must contains between 25 characters and 255 characters";
+        error.style.color = "red";
+        return false;
+    }
+
+
+
+    error.textContent = ""
+    storytimeInput.style.color = "green";
+    const remaining = document.querySelector(".remaining");
+    remaining.textContent = remainingCharacters();
+    return true;
+}
+
+document.getElementById("storytime").addEventListener("blur", validStorytime);
+
+function remainingCharacters(receivedValue) {
+    const remainingCharacters = 255 - receivedValue.length;
+    return remainingCharacters
+
+}
 
 
 
