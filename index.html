@@ -17,7 +17,9 @@
                 <label public for="name">Name</label>
                 <input type="text" name="name" id="name">
                 <span class="error"></span>
-                
+            </div>
+
+            <div class="mb-3">
                 <label for="surname">Surname</label>
                 <input type="text" name="surname" id="surname">
                 <span class="error"></span>
@@ -34,14 +36,17 @@
             <div class="mb-3">
                 <label for="profile">Tech</label>
                 <select name="profile" id="profile">
+                    <option value="">What is your profile ?</option>
                     <option value="frontend">Front-End</option>
                     <option value="backend">Back-End</option>
                     <option value="design">Design/UX</option>
                     <option value="data">Data</option>
                 </select>
+                <span class="error"></span>
             </div>
             
             <div class="mb-3">
+                <span class="error"></span>
                 <input type="radio" name="typePerson" id="earlyBird" value="Early Bird">
                 <label for="earlyBird">Early Bird</label>
                 

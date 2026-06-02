@@ -79,7 +79,7 @@ function validEmail(){
         return false;
     }
 
-    if (!('/@gmail.com$/').test(receivedValue) || !('[^a-z]').test(receivedValue) ){
+    if (!((/^[a-zA-Z0-9]+@[^\s@]+\.[^\s@]+$/).test(receivedValue)) ){
         error.style.color = "red";
         error.textContent = "You must enter a valid email";
         return false;
@@ -96,6 +96,29 @@ document.getElementById("email").addEventListener("blur", validEmail);
 
 
 
+
+function validProfile(){
+    const profileChoice = document.getElementById("profile");
+    const formData = new FormData(form);
+
+    const error = profileChoice.parentElement.querySelector(".error")
+
+    let receivedValue = (formData.get("profile") || "" ).trim();
+
+    if (receivedValue == ""){
+        error.style.color = "red";
+        error.textContent = "You have a choice between avalaible profiles";
+        return false;
+    }
+
+    profileChoice.style.color = "green"
+    error.textContent = ""
+    return true;
+    
+    
+}
+
+document.getElementById("profile").addEventListener("blur", validProfile);
 
 
 
