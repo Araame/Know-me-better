@@ -14,8 +14,10 @@
         <h1 class="fw-bold text-secondary">Know me better</h1>
         <form novalidate>
             <div class="mb-3">
-                <label for="name">Name</label>
+                <label public for="name">Name</label>
                 <input type="text" name="name" id="name">
+                <span class="error"></span>
+                
                 <label for="surname">Surname</label>
                 <input type="text" name="surname" id="surname">
             </div>
@@ -36,23 +38,28 @@
             </div>
             
             <div class="mb-3">
-                <label for="name">Early Bird</label>
-                <input type="radio" name="typePerson" id="earlyBird">
-                <label for="name">Night Owl</label>
-                <input type="radio" name="typePerson" id="nightOwl">
+                <input type="radio" name="typePerson" id="earlyBird" value="Early Bird">
+                <label for="earlyBird">Early Bird</label>
+                
+                <input type="radio" name="typePerson" id="nightOwl" value="Night Owl">
+                <label for="nightOwl">Night Owl</label>
             </div>
 
             <div class="mb-3">
-                <label for="hobby">Tech Survey</label>
-                <input type="checkbox" name="hobby" id="tech_survey">
-                <label for="hobby">Gaming</label>
-                <input type="checkbox" name="hobby" id="gaming">
-                <label for="hobby">Sport</label>
-                <input type="checkbox" name="hobby" id="sport">
-                <label for="hobby">Music</label>
-                <input type="checkbox" name="hobby" id="music">
-                <label for="hobby">Reading</label>
-                <input type="checkbox" name="hobby" id="reading">
+                <input type="checkbox" name="hobby" id="tech_survey" value="Tech Survey">
+                <label for="tech_survey">Tech Survey</label>
+                
+                <input type="checkbox" name="hobby" id="gaming" value="Gaming">
+                <label for="gaming">Gaming</label>
+                
+                <input type="checkbox" name="hobby" id="sport" value="Sport">
+                <label for="sport">Sport</label>
+                
+                <input type="checkbox" name="hobby" id="music" value="Music">
+                <label for="music">Music</label>
+                
+                <input type="checkbox" name="hobby" id="reading" value="Reading">
+                <label for="reading">Reading</label>
             </div>
 
             <div class="mb-3">
@@ -61,9 +68,8 @@
             </div>
 
             <div class="mb-3">
-                <button type="submit">Send</button>
+                <button type="submit" class="btn btn-primary">Send</button>
             </div>
-        
         </form>
     </div>
     

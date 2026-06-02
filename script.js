@@ -1,10 +1,63 @@
+const form = document.querySelector("form");
 
-//Recupere form
-form = document.querySelector("form");
-let nameInput = document.getElementById("name");
-let surnameInput = document.getElementById("surname");
-let emailInput = document.getElementById("email");
-let profileInput = document.getElementById("profile");
-let typePersonInput = document.querySelector("typePerson");
-let hobbyInput = document.querySelector("hobby");
-let storytimeInput = document.getElementById("storytime");
+function validName(){
+    const nameInput = document.getElementById("name");
+    const error = nameInput.parentElement.querySelector(".error");
+    const formData = new FormData(form);
+
+    let receivedValue = (formData.get("name") || "").trim();
+
+    if (receivedValue == ""){
+        nameInput.style.color = "red";
+        error.style.color = "red";
+        error.textContent = "The name is required";
+        return false
+
+    }
+
+    if (receivedValue.length < 2 ){
+        nameInput.style.color = "red";
+        error.style.color = "red";
+        error.textContent = "Please enter a valid name";
+        return false
+
+    }
+
+    nameInput.style.color = "green";
+    error.textContent = "";
+    return true;
+
+}
+
+document.getElementById("name").addEventListener("blur", validName);
+
+
+
+
+
+
+
+
+
+
+
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); 
+
+    const formData = new FormData(form);
+
+
+
+    const datas = {
+        name: formData.get("name"),
+        surname: formData.get("surname"),
+        email: formData.get("email"),
+        TechProfile: formData.get("profile"),
+        typePerson: formData.get("typePerson"), 
+        storytime: formData.get("storytime"),
+        hobbies: formData.getAll("hobby") 
+    };
+    
+    console.log("Datas :", datas);
+});
