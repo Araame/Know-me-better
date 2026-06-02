@@ -174,7 +174,7 @@ function validHobby(){
 
 }
 
-document.getElementById("hobby").addEventListener("change", validHobby)
+// document.getElementById("hobby").addEventListener("change", validHobby)
 
 function validStorytime() {
     const storytimeInput = document.getElementById("storytime");
@@ -202,38 +202,35 @@ function validStorytime() {
 
     error.textContent = ""
     storytimeInput.style.color = "green";
-    const remaining = document.querySelector(".remaining");
-    remaining.textContent = remainingCharacters();
     return true;
 }
 
 document.getElementById("storytime").addEventListener("blur", validStorytime);
+// document.getElementById("storytime").addEventListener("input", remainingCharacters());
 
-function remainingCharacters(receivedValue) {
-    const remainingCharacters = 255 - receivedValue.length;
-    return remainingCharacters
 
-}
+// function remainingCharacters(receivedValue) {
+//     const remainingChar = 255 - receivedValue.length;
+//     const storytimeInput = document.getElementById("storytime");
+//     const remaining = document.querySelector(".remaining");
+//     remaining.textContent = remainingChar;
+//     console.log(remaining);
+//     return remainingCharacters;
+
+// }
 
 
 
 
 form.addEventListener("submit", function(e) {
-    e.preventDefault(); 
-
-    const formData = new FormData(form);
 
 
+    if (!(validStorytime)){
+        e.preventDefault(); 
+        alert("Invalid form cannot be submitted ! Try again");
+    }
+    else{
+        alert("Formulaire soumis avec succès !");
+    }
 
-    const datas = {
-        name: formData.get("name"),
-        surname: formData.get("surname"),
-        email: formData.get("email"),
-        TechProfile: formData.get("profile"),
-        typePerson: formData.get("typePerson"), 
-        storytime: formData.get("storytime"),
-        hobbies: formData.getAll("hobby") 
-    };
-    
-    console.log("Datas :", datas);
 });
