@@ -103,7 +103,7 @@ function validProfile(){
 
     const error = profileChoice.parentElement.querySelector(".error")
 
-    let receivedValue = (formData.get("profile") || "" ).trim();
+    let receivedValue = (formData.get("profile") || "" );
 
     if (receivedValue == ""){
         error.style.color = "red";
@@ -122,8 +122,27 @@ document.getElementById("profile").addEventListener("blur", validProfile);
 
 
 
+function validPersonType(){
+    const personTypeChoice = document.getElementById("typePerson");
+    const formData = new FormData(form);
+
+    const error = personTypeChoice.parentElement.querySelector(".error");
 
 
+    let receivedValue = (formData.get("typePerson")  || "");
+
+    if(receivedValue ==  ""){
+        error.textContent = "Please make a choice between avalaible ones";
+        personTypeChoice.style.color = "red";
+        return false
+    }
+    
+    error.textContent = "";
+    personTypeChoice.style.color = "green"
+}
+
+
+document.getElementById("typePerson").addEventListener("blur", validPersonType)
 
 
 
